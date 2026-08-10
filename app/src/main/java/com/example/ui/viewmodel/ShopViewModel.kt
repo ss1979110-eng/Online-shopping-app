@@ -117,8 +117,8 @@ class ShopViewModel(application: Application) : AndroidViewModel(application) {
         items.sumOf { it.totalItemPrice }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0.0)
 
-    val deliveryFee: StateFlow<Double> = cartSubtotal.map { subtotal ->
-        if (subtotal == 0.0 || subtotal >= 100.0) 0.0 else 4.99
+    val deliveryFee: StateFlow<Double> = cartSubtotal.map { _ ->
+        0.0 // 100% Free Shipping on all orders
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0.0)
 
     val cartTotal: StateFlow<Double> = combine(cartSubtotal, deliveryFee) { subtotal, fee ->

@@ -53,7 +53,7 @@ fun HomeScreen(
     }
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
+        columns = GridCells.Adaptive(minSize = 160.dp),
         contentPadding = PaddingValues(bottom = 24.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -63,7 +63,7 @@ fun HomeScreen(
             .testTag("home_products_grid")
     ) {
         // Hero Promo Banner
-        item(span = { GridItemSpan(2) }) {
+        item(span = { GridItemSpan(maxLineSpan) }) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -116,7 +116,7 @@ fun HomeScreen(
         }
 
         // Category Filter Row
-        item(span = { GridItemSpan(2) }) {
+        item(span = { GridItemSpan(maxLineSpan) }) {
             Column(modifier = Modifier.padding(vertical = 8.dp)) {
                 Text(
                     text = "Categories",
@@ -164,7 +164,7 @@ fun HomeScreen(
 
         // Featured Products Section (if any)
         if (featuredProducts.isNotEmpty() && selectedCategory == null) {
-            item(span = { GridItemSpan(2) }) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
                 Column(modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -209,7 +209,7 @@ fun HomeScreen(
         }
 
         // Header Section with Sort Controls
-        item(span = { GridItemSpan(2) }) {
+        item(span = { GridItemSpan(maxLineSpan) }) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -258,7 +258,7 @@ fun HomeScreen(
 
         // Products Grid
         if (products.isEmpty()) {
-            item(span = { GridItemSpan(2) }) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
